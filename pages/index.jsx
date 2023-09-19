@@ -1,3 +1,4 @@
+import LandingNavbar from "@/components/LandingNavbar";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -8,6 +9,7 @@ export default function Home() {
       className={`flex flex-col items-center justify-between py-24 ${inter.className}`}
     >
       {/* hero start */}
+      <LandingNavbar />
       <div className="py-5">
         <h1 className="text-center font-bold text-5xl">
           Connecting Futures, One Job at a Time.

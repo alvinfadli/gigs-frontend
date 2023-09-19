@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function LandingNavbar() {
   return (
     <>
@@ -8,19 +10,21 @@ function LandingNavbar() {
               <div className="container mx-auto md:w-full">
                 <div className="flex items-center justify-between ">
                   <div className="px-5 py-5">
-                    <img src="../logo.png" className="w-24" />
+                    <Link href="/">
+                      <img src="../logo.png" className="w-24" />
+                    </Link>
                   </div>
                   <div className="flex items-center gap-x-3 px-5">
                     {/* <button className="w-20 py-2">Sign In</button>
                 <button className="w-28 bg-white border-2 border-slate-950 rounded-full px-3 py-2">
                   Sign Up
                 </button> */}
-                    <a
+                    <Link
+                      href="/user"
                       className="w-24 bg-transparent md:border-2 md:border-slate-950 md:rounded-full px-3 py-2 text-center hover:text-[#71c40b] md:hover:bg-[#71C40B] md:hover:border-[#71C40B] md:hover:text-white hove"
-                      to="/sign-in"
                     >
                       Sign In
-                    </a>
+                    </Link>
                     {/* <a
                       className="w-28 bg-[#71C40B] border-2 border-[#71C40B] hover:bg-white hover:text-[#71C40B]  text-white rounded-full px-3 py-2 text-center"
                       to="/sign-up"

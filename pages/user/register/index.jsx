@@ -184,7 +184,7 @@ export default function UserLogin() {
                 Registration Successful
               </h2>
               <p className="text-center mb-5">
-                Your registration is success! Let's sign in
+                Your registration is success! Lets sign in
               </p>
               <div className="text-center">
                 <Link
