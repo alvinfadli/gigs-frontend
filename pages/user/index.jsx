@@ -1,13 +1,16 @@
+import LandingNavbar from "@/components/LandingNavbar";
+
 export default function UserLogin() {
   return (
     <>
+      <LandingNavbar />
       <div className="pt-28 py-10">
         <div className="container mx-auto mb-10">
           <div className="flex justify-center items-center align-middle w-8/12 mx-auto">
             <div className="collapse lg:visible">
               <img src="" alt="" srcSet="" className="w-10/12" />
             </div>
-            <form className="w-full max-w-md p-4 ">
+            <form className="w-full max-w-md p-4">
               <h2 className="text-2xl mb-4 text-center">Welcome Back</h2>
               <h2 className="text-xl mb-4 text-center font-light">
                 We are Happy to see you back
