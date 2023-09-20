@@ -1,6 +1,8 @@
 import LandingNavbar from "@/components/LandingNavbar";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function UserLogin() {
   const [fields, setFields] = useState({
@@ -58,101 +60,112 @@ export default function UserLogin() {
   return (
     <>
       <LandingNavbar />
-      <div className="pt-20 ">
-        <div className="container mx-auto mt-5">
-          <div className="flex justify-center items-center align-middle w-full mx-auto">
-            <div className="collapse md:visible"></div>
-            <form
-              className="w-full max-w-md p-4"
-              onSubmit={registerHandler.bind(this)}
-            >
-              <h2 className="text-2xl mb-4 text-center">Welcome</h2>
-              <h2 className="text-xl mb-4 text-center font-light">
-                Join Gigs Community
-              </h2>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <input
-                  type="name"
-                  id="name"
-                  name="name"
-                  value={fields.name}
-                  required
-                  className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
-                  onChange={fieldHandler.bind(this)}
+      <div className="pt-24 flex items-center justify-center h-[95vh]">
+        <div className="container mx-auto">
+          <div className="flex justify-center items-center align-middle w-full mx-auto ">
+            <div className="flex justify-center items-center py-5 border border-slate-200 rounded-2xl shadow-2xl">
+              <div className="hidden md:block mx-auto pr-5 ">
+                <Image
+                  width={700}
+                  height={200}
+                  src="../hero-1.svg"
+                  alt=""
+                  srcSet=""
+                  className="mx-auto"
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={fields.email}
-                  onChange={fieldHandler.bind(this)}
-                  required
-                  className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={fields.password}
-                  onChange={fieldHandler.bind(this)}
-                  required
-                  className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="re_password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Confirm password
-                </label>
-                <input
-                  type="password"
-                  id="re_password"
-                  name="re_password"
-                  value={fields.re_password}
-                  onChange={fieldHandler.bind(this)}
-                  required
-                  className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
-                />
-              </div>
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="text-green-600 py-1 px-4 rounded-2xl w-[100px] hover:bg-green-600 hover:text-white border-2 border-green-600"
-                >
-                  Sign Up
-                </button>
-              </div>
-              <p className="text-center pt-3 text-sm font-light">
-                Already have an account?{" "}
-                <a className="text-green-600" to="/sign-in">
-                  Sign in
-                </a>
-              </p>
-            </form>
+              <form
+                className="w-full max-w-md p-4 px-10 border-l border-slate-200"
+                onSubmit={registerHandler.bind(this)}
+              >
+                <h2 className="text-2xl mb-2 text-center">Welcome</h2>
+                <h2 className="text-xl mb-4 text-center font-light">
+                  Join Gigs Community
+                </h2>
+                <div className="mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="name"
+                    id="name"
+                    name="name"
+                    value={fields.name}
+                    required
+                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
+                    onChange={fieldHandler.bind(this)}
+                  />
+                </div>
+                <div className="mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={fields.email}
+                    onChange={fieldHandler.bind(this)}
+                    required
+                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
+                  />
+                </div>
+                <div className="mb-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={fields.password}
+                    onChange={fieldHandler.bind(this)}
+                    required
+                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
+                  />
+                </div>
+                <div className="mb-8">
+                  <label
+                    htmlFor="re_password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Confirm password
+                  </label>
+                  <input
+                    type="password"
+                    id="re_password"
+                    name="re_password"
+                    value={fields.re_password}
+                    onChange={fieldHandler.bind(this)}
+                    required
+                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="text-green-600 py-1 px-4 rounded-2xl w-1/2 hover:bg-white bg-green-600 text-white hover:text-green-600 border-2 border-green-600"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+                <p className="text-center pt-3 text-sm font-light">
+                  Already have an account?{" "}
+                  <a className="text-green-600" to="/sign-in">
+                    Sign in
+                  </a>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -199,6 +212,7 @@ export default function UserLogin() {
           </div>
         </>
       )}
+      <Footer />
     </>
   );
 }

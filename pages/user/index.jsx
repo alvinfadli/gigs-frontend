@@ -1,9 +1,6 @@
-import LandingNavbar from "@/components/LandingNavbar";
-
 export default function UserLogin() {
   return (
     <>
-      <LandingNavbar />
       <div className="pt-28 py-10">
         <div className="container mx-auto mb-10">
           <div className="flex justify-center items-center align-middle w-8/12 mx-auto">
