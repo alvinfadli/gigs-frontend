@@ -62,17 +62,18 @@ export default function UserLogin() {
       <LandingNavbar />
       <div className="pt-24 flex items-center justify-center h-[95vh]">
         <div className="container mx-auto">
-          <div className="flex justify-center items-center align-middle w-full mx-auto ">
-            <div className="flex justify-center items-center py-5 border border-slate-200 rounded-2xl shadow-2xl">
-              <div className="hidden md:block mx-auto pr-5 ">
-                <Image
+          <div className="flex justify-center items-center align-middle w-full mx-auto lg:px-10">
+            <div className="flex justify-center items-center py-5 border border-slate-200 rounded-2xl shadow-2xl ">
+              <div className="hidden md:block mx-auto pr-5">
+                {/* <Image
                   width={700}
                   height={200}
                   src="../hero-1.svg"
                   alt=""
                   srcSet=""
                   className="mx-auto"
-                />
+                /> */}
+                <img src="../register.png" className="" width={980} />
               </div>
               <form
                 className="w-full max-w-md p-4 px-10 border-l border-slate-200"
@@ -183,7 +184,7 @@ export default function UserLogin() {
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
-                  stroke="#71c40b"
+                  stroke="#16a34a"
                   className="w-20 h-20"
                 >
                   <path
@@ -193,7 +194,7 @@ export default function UserLogin() {
                   />
                 </svg>
               </div>
-              <h2 className="text-xl mb-2 text-center">
+              <h2 className="text-xl mb-2 pt-5 text-center">
                 Registration Successful
               </h2>
               <p className="text-center mb-5">
