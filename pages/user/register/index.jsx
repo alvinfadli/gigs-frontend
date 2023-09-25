@@ -13,6 +13,9 @@ export default function UserLogin() {
     re_password: "",
   });
 
+  const [status, setStatus] = useState("normal");
+  const [isErrorAlert, setIsErrorAlert] = useState(false);
+
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   async function registerHandler(e) {
@@ -28,10 +31,16 @@ export default function UserLogin() {
 
     const registerRes = await registerReq.json();
 
-    console.log();
+    if (registerRes.status === "error") {
+      // const errorMessage = registerRes.message;
+      // console.log(errorMessage); // This will print "Email and password are incorrect" to the console
+      setStatus(registerRes.message);
+      setIsErrorAlert(true);
+    }
 
     if (registerRes.status === "success") {
       // Registration was successful
+      setIsErrorAlert(false);
       setIsSuccessModalOpen(true);
       // Reset the input fields
     }
@@ -83,6 +92,31 @@ export default function UserLogin() {
                 <h2 className="text-xl mb-4 text-center font-light">
                   Join Gigs Community
                 </h2>
+                {/* display error */}
+                {isErrorAlert && (
+                  <>
+                    <div
+                      className="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400"
+                      role="alert"
+                    >
+                      <svg
+                        className="flex-shrink-0 inline w-4 h-4 mr-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                      </svg>
+                      <span className="sr-only">Info</span>
+                      <div>
+                        <span className="font-medium">Login error! </span>
+                        {status}
+                      </div>
+                    </div>
+                  </>
+                )}
+                {/* end display error */}
                 <div className="mb-2">
                   <label
                     htmlFor="name"

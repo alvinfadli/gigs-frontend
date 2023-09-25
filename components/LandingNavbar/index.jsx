@@ -25,12 +25,12 @@ function LandingNavbar() {
                     >
                       Sign In
                     </Link>
-                    {/* <a
+                    <Link
                       className="w-28 bg-[#71C40B] border-2 border-[#71C40B] hover:bg-white hover:text-[#71C40B]  text-white rounded-full px-3 py-2 text-center"
-                      to="/sign-up"
+                      href="/user/register"
                     >
                       Sign Up
-                    </a> */}
+                    </Link>
                   </div>
                 </div>
               </div>
