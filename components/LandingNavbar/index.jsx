@@ -21,12 +21,12 @@ function LandingNavbar() {
                 </button> */}
                     <Link
                       href="/user"
-                      className="w-24 bg-transparent md:border-2 md:border-slate-950 md:rounded-full px-3 py-2 text-center hover:text-[#71c40b] md:hover:bg-[#71C40B] md:hover:border-[#71C40B] md:hover:text-white hove"
+                      className="bg-transparent px-3 py-2 text-center hover:text-green-600"
                     >
                       Sign In
                     </Link>
                     <Link
-                      className="w-28 bg-[#71C40B] border-2 border-[#71C40B] hover:bg-white hover:text-[#71C40B]  text-white rounded-full px-3 py-2 text-center"
+                      className="w-[6.5rem] bg-green-600 border-2 border-green-600 hover:bg-white hover:text-green-600  text-white rounded-lg px-3 py-1.5 text-center"
                       href="/user/register"
                     >
                       Sign Up
