@@ -45,6 +45,9 @@ export default function UserLogin() {
       // Reset the input fields
     }
   }
+  function indexHandler() {
+    Router.push("/user/jobs");
+  }
 
   function fieldHandler(e) {
     const name = e.target.getAttribute("name");
@@ -68,30 +71,50 @@ export default function UserLogin() {
 
   return (
     <>
-      <LandingNavbar />
-      <div className="pt-24 flex items-center justify-center h-[95vh]">
-        <div className="container mx-auto">
-          <div className="flex justify-center items-center align-middle w-full mx-auto lg:px-10">
-            <div className="flex justify-center items-center py-5 border border-slate-200 rounded-2xl shadow-2xl ">
-              <div className="hidden md:block mx-auto pr-5">
-                {/* <Image
-                  width={700}
-                  height={200}
-                  src="../hero-1.svg"
-                  alt=""
-                  srcSet=""
-                  className="mx-auto"
-                /> */}
-                <img src="../register.png" className="" width={980} />
+      <div className="bg-white font-family-karla h-screen">
+        <div className="w-full flex flex-wrap">
+          <div className="w-full md:w-1/2 flex flex-col">
+            {/* <div className="mx-auto">
+              <div class="flex justify-center mx-auto md:justify-start pt-12 md:pl-12 md:-mb-24">
+                <a
+                  href="#"
+                  class="w-48 mx-auto text-white font-bold text-xl p-4"
+                >
+                  <img
+                    class="mx-auto w-52 pr-1"
+                    src="logo.png"
+                    alt="Workflow"
+                  />
+                </a>
               </div>
+            </div> */}
+
+            <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+              <div className="mx-auto">
+                <Link href="/" className=" text-white font-bold text-xl p-4">
+                  <img
+                    className=" w-44 pr-3"
+                    src="../logo.png"
+                    alt="Workflow"
+                  />
+                </Link>
+              </div>
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Sign up to Gigs
+              </h2>
+              <p className="mt-2 text-center text-sm text-gray-600">
+                or <span> </span>
+                <a
+                  href="#"
+                  className="font-medium text-green-600 hover:text-green-500"
+                >
+                  sign up an HR Account
+                </a>
+              </p>
               <form
-                className="w-full max-w-md p-4 px-10 border-l border-slate-200"
+                className="flex flex-col pt-3 md:pt-8"
                 onSubmit={registerHandler.bind(this)}
               >
-                <h2 className="text-2xl mb-2 text-center">Welcome</h2>
-                <h2 className="text-xl mb-4 text-center font-light">
-                  Join Gigs Community
-                </h2>
                 {/* display error */}
                 {isErrorAlert && (
                   <>
@@ -117,90 +140,94 @@ export default function UserLogin() {
                   </>
                 )}
                 {/* end display error */}
-                <div className="mb-2">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                <div className="flex flex-col pt-4">
+                  <label htmlFor="name" className="text-lg">
                     Name
                   </label>
                   <input
                     type="name"
                     id="name"
                     name="name"
+                    placeholder="John Doe"
                     value={fields.name}
                     required
-                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={fieldHandler.bind(this)}
                   />
                 </div>
-                <div className="mb-2">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                <div class="flex flex-col pt-4">
+                  <label htmlFor="email" class="text-lg">
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
+                    placeholder="your@email.com"
                     name="email"
                     value={fields.email}
                     onChange={fieldHandler.bind(this)}
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    autoFocus
                     required
-                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
                   />
                 </div>
-                <div className="mb-2">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+
+                <div class="flex flex-col pt-4">
+                  <label for="password" class="text-lg">
                     Password
                   </label>
                   <input
                     type="password"
                     id="password"
+                    placeholder="Password"
                     name="password"
                     value={fields.password}
                     onChange={fieldHandler.bind(this)}
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                     required
-                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
                   />
                 </div>
-                <div className="mb-8">
-                  <label
-                    htmlFor="re_password"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Confirm password
+                <div class="flex flex-col pt-4">
+                  <label for="password" class="text-lg">
+                    Confirm Password
                   </label>
                   <input
                     type="password"
                     id="re_password"
+                    placeholder="Confirm Password"
                     name="re_password"
                     value={fields.re_password}
                     onChange={fieldHandler.bind(this)}
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                     required
-                    className="mt-1 p-2 w-full border-[2px] border-green-200 rounded-2xl bg-transparent"
                   />
                 </div>
-                <div className="flex justify-center">
-                  <button
-                    type="submit"
-                    className="text-green-600 py-1 px-4 rounded-2xl w-1/2 hover:bg-white bg-green-600 text-white hover:text-green-600 border-2 border-green-600"
+
+                <input
+                  type="submit"
+                  value="Log In"
+                  class="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+                />
+              </form>
+              <div class="text-center pt-12 pb-12">
+                <p>
+                  Dont have an account?{" "}
+                  <a
+                    href="register.html"
+                    class="underline font-semibold text-green-600 hover:text-gray-700"
                   >
-                    Sign Up
-                  </button>
-                </div>
-                <p className="text-center pt-3 text-sm font-light">
-                  Already have an account?{" "}
-                  <a className="text-green-600" to="/sign-in">
-                    Sign in
+                    Register here.
                   </a>
                 </p>
-              </form>
+              </div>
             </div>
+          </div>
+
+          <div class="w-1/2 shadow-2xl">
+            <img
+              class="object-cover w-full h-screen hidden md:block"
+              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            />
           </div>
         </div>
       </div>
@@ -238,7 +265,7 @@ export default function UserLogin() {
                 <Link
                   href="/user"
                   onClick={closeModal}
-                  className="text-green-600 py-2 px-4 rounded-2xl w-[100px] hover:bg-green-600 hover:text-white border-2 border-green-600"
+                  className="bg-green-600 text-white py-2 px-4 rounded-lg w-[100px] hover:bg-white hover:text-green-600 border-2 border-green-600"
                 >
                   Sign in
                 </Link>
@@ -247,7 +274,6 @@ export default function UserLogin() {
           </div>
         </>
       )}
-      <Footer />
     </>
   );
 }
