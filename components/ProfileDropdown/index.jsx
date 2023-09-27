@@ -58,20 +58,26 @@ function UserDropdown() {
       {isOpen && (
         <ul className="absolute space-y-2 bg-white border border-gray-300 rounded-md shadow-lg w-48 top-10 right-0">
           <li>
-            <a
+            {/* <a
               href="#"
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-t-md"
             >
               Profile
-            </a>
+            </a> */}
+            <Link
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-t-md"
+              href="/user/profile"
+            >
+              Profile
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              href="/user/my-jobs"
             >
               My Jobs
-            </a>
+            </Link>
           </li>
           <li>
             {/* <a
@@ -80,13 +86,9 @@ function UserDropdown() {
             >
               Sign Out
             </a> */}
-            <Link
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-b-md"
-              to="/"
-              onClick={handleSignOut}
-            >
+            <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rounded-b-md">
               Sign out
-            </Link>
+            </a>
           </li>
         </ul>
       )}
