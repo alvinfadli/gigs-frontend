@@ -33,6 +33,125 @@ function Jobs(props) {
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
   };
+  const renderTabContent = () => {
+    if (selectedTab === "jobFeed") {
+      return (
+        <div className="flex w-9/12 mx-auto">
+          <div className="w-full md:w-5/12 md:mr-5 ml-1 ">
+            <div>
+              {props.jobRes.map((job) => {
+                return (
+                  <div className="pb-1" data-aos="fade-up" key={job._id}>
+                    <button
+                      className="text-left w-full"
+                      onClick={function () {
+                        handleJobSelection(job);
+                      }}
+                    >
+                      <div className="relative rounded mb-1 rounded-lg pb-10 h-max shadow-lg border-[0.01px] border-slate-400">
+                        <div className="px-6 py-4">
+                          <div className="font-bold text-xl mb-2">
+                            {job.title}
+                          </div>
+                          <p className="text-gray-700 text-base mb-2">
+                            {job.company_name}
+                          </p>
+                          <p className="text-gray-700 text-base w-max mb-3 bg-slate-200 rounded-lg px-1">
+                            {job.salary}
+                          </p>
+                          <p className="text-gray-700 text-base font-light">
+                            {createExcerpt(job.description, 100)}
+                          </p>
+                        </div>
+                        <div className="px-6 pt-4 pb-2 absolute bottom-0">
+                          <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                            {formatDate(job.postedDate)}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                );
+              })}
+              <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div className="md:w-7/12 ">
+            <div className=" container h-full hidden md:block">
+              <div className="rounded rounded-lg mb-1.5 shadow-lg border-[0.01px] border-slate-400 sticky top-2 h-[95vh]">
+                {selectedJob.map((item) => {
+                  return (
+                    <div className="relative pt-4 pb-0 h-full" key={item._id}>
+                      <div className="px-6">
+                        <div className="font-bold text-2xl">{item.title}</div>
+                      </div>
+
+                      <p className="text-gray-700 text-lg mb-2 px-6">
+                        {item.company_name}
+                      </p>
+                      <div className="px-6">
+                        <p className="text-gray-700 text-base w-max mb-3 bg-slate-200 rounded-lg px-1">
+                          {item.salary}
+                        </p>
+                      </div>
+                      <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
+                      <div className="overflow-y-auto h-3/4 px-6 pt-3 pb-0">
+                        <div>
+                          <h1 className="text-lg font-bold">Job Details</h1>
+                          <p className="text-justify">{item.description}</p>
+                          <h1 className="text-lg font-bold pt-3 ">
+                            Requirements
+                          </h1>
+                          <ul className="list-disc px-5">
+                            {item.requirement.map((x, index) => {
+                              return <li key={index}>{x}</li>;
+                            })}
+                          </ul>
+                          <h1 className="text-lg font-bold pt-3">Benefits</h1>
+                          <ul className="list-disc px-5">
+                            {item.benefit.map((x, index) => {
+                              return <li key={index}>{x}</li>;
+                            })}
+                          </ul>
+                          <p className="pt-3 text-justify">{item.additional}</p>
+                          {/* <ul className="list-disc px-5">
+                                    {item.userApplied.map((x, index) => {
+                                      return <li key={index}>{x}</li>;
+                                    })}
+                                  </ul> */}
+                          {/* <ReactMarkdown>
+                                    {item.description}
+                                  </ReactMarkdown> */}
+                        </div>
+                      </div>
+                      <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
+                      <div className="absolute bottom-4 right-6">
+                        <button
+                          className="bg-green-600 hover:bg-green-700 w-max text-white font-bold py-3 px-4 rounded-lg"
+                          onClick={() => applyHandler(item._id)}
+                          disabled={isApplying}
+                        >
+                          {isApplying ? "Applying..." : "Apply Now"}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (selectedTab === "recentSearch") {
+      return (
+        <div>
+          {/* Content for the Recent Search tab */}
+          <h2>Recent Search Content</h2>
+          {/* Add your recent search content here */}
+        </div>
+      );
+    }
+  };
 
   useEffect(() => {
     // Retrieve the accessToken from cookies
@@ -141,7 +260,7 @@ function Jobs(props) {
     <>
       <UserNavbar />
       <div className={`pt-20 ${inter.className}`}>
-        <div className=" w-full mx-auto my-3">
+        <div className=" w-full mx-auto mt-5">
           <div className="py-5 pb-8">
             <div className="mb-1 w-7/12 mx-auto">
               <form className="shadow-lg">
@@ -186,131 +305,25 @@ function Jobs(props) {
               </form>
             </div>
           </div>
-          <div className="w-full border-b-[1px] border-slate-300 flex mx-auto justify-center gap-5 my-8 text-2xl">
+          <div className="lg:w-full border-b-[1px] border-slate-300 lg:flex lg:mx-auto justify-center text-2xl mb-5 hidden content-center">
             <button
-              className={`w-2/12 border-b-[5px] border-slate-300 pb-3 font-semibold text-center ${
-                selectedTab === "jobFeed" ? "active-tab" : ""
+              className={`w-2/12 py-4 text-center hover:bg-slate-100 ${
+                selectedTab === "jobFeed" ? "selected-tab" : ""
               }`}
               onClick={() => handleTabClick("jobFeed")}
             >
               Job feed
             </button>
             <button
-              className={`w-2/12 text-center pb-3 ${
-                selectedTab === "recentSearch" ? "active-tab" : ""
+              className={`w-2/12 py-4 text-center hover:bg-slate-100 ${
+                selectedTab === "recentSearch" ? "selected-tab" : ""
               }`}
               onClick={() => handleTabClick("recentSearch")}
             >
               Recent search
             </button>
           </div>
-          <div className="flex w-9/12 mx-auto">
-            <div className="w-full md:w-5/12 md:mr-5 ml-1 ">
-              <div>
-                {props.jobRes.map((job) => {
-                  return (
-                    <div className="pb-1" data-aos="fade-up" key={job._id}>
-                      <button
-                        className="text-left w-full"
-                        onClick={function () {
-                          handleJobSelection(job);
-                        }}
-                      >
-                        <div className="relative rounded mb-1 rounded-lg pb-10 h-max shadow-lg border-[0.01px] border-slate-400">
-                          <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2">
-                              {job.title}
-                            </div>
-                            <p className="text-gray-700 text-base mb-2">
-                              {job.company_name}
-                            </p>
-                            <p className="text-gray-700 text-base w-max mb-3 bg-slate-200 rounded-lg px-1">
-                              {job.salary}
-                            </p>
-                            <p className="text-gray-700 text-base font-light">
-                              {createExcerpt(job.description, 100)}
-                            </p>
-                          </div>
-                          <div className="px-6 pt-4 pb-2 absolute bottom-0">
-                            <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                              {formatDate(job.postedDate)}
-                            </span>
-                          </div>
-                        </div>
-                      </button>
-                    </div>
-                  );
-                })}
-                <p>Lorem ipsum dolor sit amet.</p>
-              </div>
-            </div>
-            <div className="md:w-7/12 ">
-              <div className=" container h-full hidden md:block">
-                <div className="rounded rounded-lg mb-1.5 shadow-lg border-[0.01px] border-slate-400 sticky top-2 h-[95vh]">
-                  {selectedJob.map((item) => {
-                    return (
-                      <div className="relative pt-4 pb-0 h-full" key={item._id}>
-                        <div className="px-6">
-                          <div className="font-bold text-2xl">{item.title}</div>
-                        </div>
-
-                        <p className="text-gray-700 text-lg mb-2 px-6">
-                          {item.company_name}
-                        </p>
-                        <div className="px-6">
-                          <p className="text-gray-700 text-base w-max mb-3 bg-slate-200 rounded-lg px-1">
-                            {item.salary}
-                          </p>
-                        </div>
-                        <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
-                        <div className="overflow-y-auto h-3/4 px-6 pt-3 pb-0">
-                          <div>
-                            <h1 className="text-lg font-bold">Job Details</h1>
-                            <p className="text-justify">{item.description}</p>
-                            <h1 className="text-lg font-bold pt-3 ">
-                              Requirements
-                            </h1>
-                            <ul className="list-disc px-5">
-                              {item.requirement.map((x, index) => {
-                                return <li key={index}>{x}</li>;
-                              })}
-                            </ul>
-                            <h1 className="text-lg font-bold pt-3">Benefits</h1>
-                            <ul className="list-disc px-5">
-                              {item.benefit.map((x, index) => {
-                                return <li key={index}>{x}</li>;
-                              })}
-                            </ul>
-                            <p className="pt-3 text-justify">
-                              {item.additional}
-                            </p>
-                            {/* <ul className="list-disc px-5">
-                                    {item.userApplied.map((x, index) => {
-                                      return <li key={index}>{x}</li>;
-                                    })}
-                                  </ul> */}
-                            {/* <ReactMarkdown>
-                                    {item.description}
-                                  </ReactMarkdown> */}
-                          </div>
-                        </div>
-                        <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
-                        <div className="absolute bottom-4 right-6">
-                          <button
-                            className="bg-green-600 hover:bg-green-700 w-max text-white font-bold py-3 px-4 rounded-lg"
-                            onClick={() => applyHandler(item._id)}
-                            disabled={isApplying}
-                          >
-                            {isApplying ? "Applying..." : "Apply Now"}
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
+          {renderTabContent()}
         </div>
       </div>
       <Footer />

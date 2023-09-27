@@ -5,6 +5,11 @@
 .modal-popup {
     animation: popup 0.5s ease forwards;
 }
+.selected-tab {
+    border-bottom: 5px solid #15803d;
+    /* Replace with your desired border color */
+    font-weight: bold;
+}
 
 @keyframes popup {
     0% {
