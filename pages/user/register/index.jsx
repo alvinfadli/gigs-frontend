@@ -3,6 +3,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import { unAuthPage } from "@/middlewares/userAuth";
+
+export async function getServerSideProps(context) {
+  await unAuthPage(context);
+  return {
+    props: {},
+  };
+}
 
 export default function UserLogin() {
   const [fields, setFields] = useState({
@@ -93,13 +101,13 @@ export default function UserLogin() {
               <div className="mx-auto">
                 <Link href="/" className=" text-white font-bold text-xl p-4">
                   <img
-                    className=" w-44 pr-3"
+                    className="w-28 md:w-44 pr-3"
                     src="../logo.png"
                     alt="Workflow"
                   />
                 </Link>
               </div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Sign up to Gigs
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
@@ -205,19 +213,19 @@ export default function UserLogin() {
 
                 <input
                   type="submit"
-                  value="Log In"
+                  value="Sign up"
                   class="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
                 />
               </form>
               <div class="text-center pt-12 pb-12">
                 <p>
-                  Dont have an account?{" "}
-                  <a
-                    href="register.html"
+                  Already have an account?{" "}
+                  <Link
+                    href="/user"
                     class="underline font-semibold text-green-600 hover:text-gray-700"
                   >
-                    Register here.
-                  </a>
+                    Sign in.
+                  </Link>
                 </p>
               </div>
             </div>

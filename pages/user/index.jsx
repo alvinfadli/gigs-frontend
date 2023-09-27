@@ -3,27 +3,11 @@ import LandingNavbar from "@/components/LandingNavbar";
 import { useState, useEffect } from "react";
 import Cookie from "js-cookie";
 import Router from "next/router";
-import cookies from "next-cookies";
+import { unAuthPage } from "@/middlewares/userAuth";
+import Link from "next/link";
 
-export function getServerSideProps(context) {
-  const allCookies = cookies(context);
-
-  // console.log(allCookies.token);
-  // if (allCookies.token) {
-  //   return context.res
-  //     .writeHead(302, {
-  //       location: "/user/jobs",
-  //     })
-  //     .end();
-  // }
-  if (allCookies.token) {
-    return {
-      redirect: {
-        destination: "user/jobs",
-        permanent: false,
-      },
-    };
-  }
+export async function getServerSideProps(context) {
+  await unAuthPage(context);
   return {
     props: {},
   };
@@ -91,10 +75,14 @@ export default function UserLogin() {
             <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
               <div className="mx-auto">
                 <a href="#" className=" text-white font-bold text-xl p-4">
-                  <img className=" w-44 pr-3" src="logo.png" alt="Workflow" />
+                  <img
+                    className="w-28 md:w-44 pr-3"
+                    src="logo.png"
+                    alt="Workflow"
+                  />
                 </a>
               </div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Sign in to your account
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
@@ -146,7 +134,6 @@ export default function UserLogin() {
                     name="email"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={fieldHandler.bind(this)}
-                    autoFocus
                     required
                   />
                 </div>
@@ -168,19 +155,19 @@ export default function UserLogin() {
 
                 <input
                   type="submit"
-                  value="Log In"
+                  value="Sign in"
                   class="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
                 />
               </form>
               <div class="text-center pt-12 pb-12">
                 <p>
                   Dont have an account?{" "}
-                  <a
-                    href="register.html"
+                  <Link
+                    href="/user/register"
                     class="underline font-semibold text-green-600 hover:text-gray-700"
                   >
                     Register here.
-                  </a>
+                  </Link>
                 </p>
               </div>
             </div>
@@ -189,7 +176,7 @@ export default function UserLogin() {
           <div class="w-1/2 shadow-2xl">
             <img
               class="object-cover w-full h-screen hidden md:block"
-              src="https://source.unsplash.com/IXUM4cJynP0"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
             />
           </div>
         </div>
