@@ -261,8 +261,8 @@ function Jobs(props) {
       <UserNavbar />
       <div className={`pt-20 ${inter.className}`}>
         <div className=" w-full mx-auto mt-5">
-          <div className="py-5 pb-8">
-            <div className="mb-1 w-7/12 mx-auto">
+          <div className="py-3 md:py-5 md:pb-8">
+            <div className="mb-1 px-5 md:w-7/12 mx-auto">
               <form className="shadow-lg">
                 <label
                   htmlFor="default-search"

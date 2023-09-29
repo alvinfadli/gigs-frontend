@@ -11,7 +11,7 @@ function UserNavbar() {
               <div className="container mx-auto md:w-full">
                 <div className="flex items-center justify-between ">
                   <div className=" py-5">
-                    <Link href="/">
+                    <Link href="/user/jobs">
                       <img src="../logo.png" className="w-24" />
                     </Link>
                   </div>
