@@ -1,9 +1,10 @@
-import LandingNavbar from "@/components/LandingNavbar";
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import Footer from "@/components/Footer";
+import LandingNavbar from "@/components/LandingNavbar";
+import { useState, useEffect } from "react";
+import Cookie from "js-cookie";
+import Router from "next/router";
 import { unAuthPage } from "@/middlewares/userAuth";
+import Link from "next/link";
 
 export async function getServerSideProps(context) {
   await unAuthPage(context);
@@ -12,50 +13,14 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function UserRegister() {
+export default function UserLogin() {
   const [fields, setFields] = useState({
-    username: "",
-    name: "",
     email: "",
     password: "",
-    re_password: "",
   });
 
   const [status, setStatus] = useState("normal");
   const [isErrorAlert, setIsErrorAlert] = useState(false);
-
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-
-  async function registerHandler(e) {
-    e.preventDefault();
-    true;
-    const registerReq = await fetch("http://localhost:3000/api/register", {
-      method: "POST",
-      body: JSON.stringify(fields),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const registerRes = await registerReq.json();
-
-    if (registerRes.status === "error") {
-      // const errorMessage = registerRes.message;
-      // console.log(errorMessage); // This will print "Email and password are incorrect" to the console
-      setStatus(registerRes.message);
-      setIsErrorAlert(true);
-    }
-
-    if (registerRes.status === "success") {
-      // Registration was successful
-      setIsErrorAlert(false);
-      setIsSuccessModalOpen(true);
-      // Reset the input fields
-    }
-  }
-  function indexHandler() {
-    Router.push("/user/jobs");
-  }
 
   function fieldHandler(e) {
     const name = e.target.getAttribute("name");
@@ -65,18 +30,28 @@ export default function UserRegister() {
       [name]: e.target.value,
     });
   }
+  async function loginHandler(e) {
+    e.preventDefault();
 
-  const closeModal = () => {
-    setIsSuccessModalOpen(false);
-    setFields({
-      username: "",
-      name: "",
-      email: "",
-      password: "",
-      re_password: "",
+    const loginReq = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(fields),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-  };
 
+    const loginRes = await loginReq.json();
+    if (loginRes.status === "error") {
+      setStatus(loginRes.message);
+      setIsErrorAlert(true);
+    }
+    // console.log(fields);
+    if (loginRes.status === "success") {
+      Cookie.set("token", loginRes.data.accessToken);
+      Router.push("/user/jobs");
+    }
+  }
   return (
     <>
       <div className="bg-white font-family-karla h-screen">
@@ -108,20 +83,20 @@ export default function UserRegister() {
                 </Link>
               </div>
               <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Sign up to Gigs
+                Sign in to your account
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
                 or <span> </span>
                 <Link
-                  href="/hr/register"
+                  href="/hr/login"
                   className="font-medium text-green-600 hover:text-green-500"
                 >
-                  sign up an HR Account
+                  sign in with an HR Account
                 </Link>
               </p>
               <form
                 className="flex flex-col pt-3 md:pt-8"
-                onSubmit={registerHandler.bind(this)}
+                onSubmit={loginHandler.bind(this)}
               >
                 {/* display error */}
                 {isErrorAlert && (
@@ -141,28 +116,13 @@ export default function UserRegister() {
                       </svg>
                       <span className="sr-only">Info</span>
                       <div>
-                        <span className="font-medium">Sign up error! </span>
+                        <span className="font-medium">Login error! </span>
                         {status}
                       </div>
                     </div>
                   </>
                 )}
                 {/* end display error */}
-                <div className="flex flex-col pt-4">
-                  <label htmlFor="name" className="text-lg">
-                    Name
-                  </label>
-                  <input
-                    type="name"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    value={fields.name}
-                    required
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-                    onChange={fieldHandler.bind(this)}
-                  />
-                </div>
                 <div className="flex flex-col pt-4">
                   <label htmlFor="email" className="text-lg">
                     Email
@@ -172,9 +132,8 @@ export default function UserRegister() {
                     id="email"
                     placeholder="your@email.com"
                     name="email"
-                    value={fields.email}
-                    onChange={fieldHandler.bind(this)}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                    onChange={fieldHandler.bind(this)}
                     required
                   />
                 </div>
@@ -188,42 +147,26 @@ export default function UserRegister() {
                     id="password"
                     placeholder="Password"
                     name="password"
-                    value={fields.password}
-                    onChange={fieldHandler.bind(this)}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
-                    required
-                  />
-                </div>
-                <div className="flex flex-col pt-4">
-                  <label htmlFor="password" className="text-lg">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    id="re_password"
-                    placeholder="Confirm Password"
-                    name="re_password"
-                    value={fields.re_password}
                     onChange={fieldHandler.bind(this)}
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                     required
                   />
                 </div>
 
                 <input
                   type="submit"
-                  value="Sign up"
+                  value="Sign in"
                   className="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
                 />
               </form>
               <div className="text-center pt-12 pb-12">
                 <p>
-                  Already have an account?{" "}
+                  Dont have an account?{" "}
                   <Link
-                    href="/user/login"
+                    href="/user/register"
                     className="underline font-semibold text-green-600 hover:text-gray-700"
                   >
-                    Sign in.
+                    Register here.
                   </Link>
                 </p>
               </div>
@@ -233,54 +176,11 @@ export default function UserRegister() {
           <div className="w-1/2 shadow-2xl">
             <img
               className="object-cover w-full h-screen hidden md:block"
-              src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
             />
           </div>
         </div>
       </div>
-      {isSuccessModalOpen && (
-        <>
-          <div
-            className={`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50`}
-          >
-            <div
-              className={`bg-white p-8 rounded-lg shadow-md modal-popup relative`}
-            >
-              <div className="w-min mx-auto mb-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="#16a34a"
-                  className="w-20 h-20"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl mb-2 pt-5 text-center">
-                Registration Successful
-              </h2>
-              <p className="text-center mb-5">
-                Your registration is success! Lets sign in
-              </p>
-              <div className="text-center">
-                <Link
-                  href="/user/login"
-                  onClick={closeModal}
-                  className="bg-green-600 text-white py-2 px-4 rounded-lg w-[100px] hover:bg-white hover:text-green-600 border-2 border-green-600"
-                >
-                  Sign in
-                </Link>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
     </>
   );
 }

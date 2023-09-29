@@ -4,9 +4,9 @@ function LandingNavbar() {
   return (
     <>
       <header className="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
-        <div className="container mx-auto w-11/12">
+        <div className="mx-auto w-full">
           <div className="flex items-center justify-center">
-            <header className="bg-transparent w-full border-b-[1px] border-slate-950">
+            <header className="bg-transparent w-full border-b-[1px] border-slate-300">
               <div className="container mx-auto md:w-full">
                 <div className="flex items-center justify-between ">
                   <div className="px-5 py-5">
@@ -20,8 +20,8 @@ function LandingNavbar() {
                   Sign Up
                 </button> */}
                     <Link
-                      href="/user"
-                      className="bg-transparent px-3 py-2 text-center hover:text-green-600"
+                      href="/user/login"
+                      className="bg-transparent px-3 py-2 text-center hover:text-green-600 hidden md:block"
                     >
                       Sign In
                     </Link>

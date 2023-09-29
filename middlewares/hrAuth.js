@@ -1,5 +1,5 @@
 import cookies from "next-cookies";
-export function unAuthPage(context) {
+export function hrUnAuthPage(context) {
   return new Promise((resolve) => {
     const allCookies = cookies(context);
 
@@ -7,7 +7,7 @@ export function unAuthPage(context) {
     if (allCookies.token) {
       return context.res
         .writeHead(302, {
-          location: "/user/jobs",
+          location: "/hr/dashboard",
         })
         .end();
     }
@@ -15,7 +15,7 @@ export function unAuthPage(context) {
   });
 }
 
-export function authPage(context) {
+export function hrAuthPage(context) {
   return new Promise((resolve) => {
     const allCookies = cookies(context);
 
@@ -23,7 +23,7 @@ export function authPage(context) {
     if (!allCookies.token) {
       return context.res
         .writeHead(302, {
-          location: "/user/login",
+          location: "/hr/login",
         })
         .end();
     }

@@ -36,7 +36,7 @@ function Jobs(props) {
   const renderTabContent = () => {
     if (selectedTab === "jobFeed") {
       return (
-        <div className="flex w-9/12 mx-auto">
+        <div className="flex px-5 md:10/12 lg:w-9/12 mx-auto">
           <div className="w-full md:w-5/12 md:mr-5 ml-1 ">
             <div>
               {props.jobRes.map((job) => {
