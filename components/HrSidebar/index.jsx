@@ -35,11 +35,11 @@ export default function Sidebar({ children }) {
 
   return (
     <aside
-      className={`h-screen transition-all ${
+      className={`sticky top-0 h-screen transition-all z-10 ${
         expanded ? "w-full sm:w-full md:w-3/12 lg:w-2/12" : "w-0 md:mr-10 "
       }`}
     >
-      <nav className="h-full flex flex-col bg-slate-100 border-r  shadow-sm">
+      <nav className=" h-full flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-5 flex justify-between items-center">
           <img
             src="../logo.png"
@@ -50,7 +50,9 @@ export default function Sidebar({ children }) {
           />
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-grey-50 hover:bg-green-100"
+            className={`p-1.5 rounded-lghover:bg-green-100 rounded-lg ${
+              expanded ? "bg-green-50" : "bg-green-200"
+            }`}
           >
             {expanded ? <ChevronFirst /> : <Menu />}
           </button>
@@ -92,8 +94,8 @@ export function SidebarItem({ icon, text, active, alert }) {
         transition-colors group
         ${
           active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-grey-600"
+            ? "bg-gradient-to-tr from-green-200 to-green-100 text-green-800"
+            : "hover:bg-green-50 text-grey-600"
         }
     `}
     >
