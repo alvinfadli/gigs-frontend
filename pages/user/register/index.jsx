@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { unAuthPage } from "@/middlewares/userAuth";
+import Logo from "@/components/Logo";
 
 export async function getServerSideProps(context) {
   await unAuthPage(context);
@@ -79,7 +80,7 @@ export default function UserRegister() {
 
   return (
     <>
-      <div className="bg-white font-family-karla h-screen">
+      <div className="bg-white h-screen">
         <div className="w-full flex flex-wrap">
           <div className="w-full md:w-1/2 flex flex-col">
             {/* <div className="mx-auto">
@@ -98,16 +99,17 @@ export default function UserRegister() {
             </div> */}
 
             <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-              <div className="mx-auto">
-                <Link href="/" className=" text-white font-bold text-xl p-4">
-                  <img
+              <div className="mx-auto p-0">
+                <Link href="/" className="text-5xl md:text-7xl px-4 py-0 m-0">
+                  {/* <img
                     className="w-28 md:w-44 pr-3"
                     src="../logo.png"
                     alt="Workflow"
-                  />
+                  /> */}
+                  <Logo />
                 </Link>
               </div>
-              <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <h2 className="text-center text-3xl font-extrabold text-gray-900">
                 Sign up to Gigs
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
@@ -120,7 +122,7 @@ export default function UserRegister() {
                 </Link>
               </p>
               <form
-                className="flex flex-col pt-3 md:pt-8"
+                className="flex flex-col"
                 onSubmit={registerHandler.bind(this)}
               >
                 {/* display error */}
@@ -232,7 +234,7 @@ export default function UserRegister() {
 
           <div className="w-1/2 shadow-2xl">
             <img
-              className="object-cover w-full h-screen hidden md:block"
+              className="object-cover w-full h-full hidden md:block"
               src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
             />
           </div>

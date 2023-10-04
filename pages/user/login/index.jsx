@@ -5,6 +5,7 @@ import Cookie from "js-cookie";
 import Router from "next/router";
 import { unAuthPage } from "@/middlewares/userAuth";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 export async function getServerSideProps(context) {
   await unAuthPage(context);
@@ -74,12 +75,16 @@ export default function UserLogin() {
 
             <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
               <div className="mx-auto">
-                <Link href="/" className=" text-white font-bold text-xl p-4">
-                  <img
+                <Link
+                  href="/"
+                  className=" text-white font-bold text-5xl md:text-7xl p-4"
+                >
+                  {/* <img
                     className="w-28 md:w-44 pr-3"
                     src="../logo.png"
                     alt="Workflow"
-                  />
+                  /> */}
+                  <Logo />
                 </Link>
               </div>
               <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">

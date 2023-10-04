@@ -1,17 +1,19 @@
 import Link from "next/link";
+import Logo from "../Logo";
 
 function LandingNavbar() {
   return (
     <>
-      <header className="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+      <header className="bg-transparent sticky top-0 left-0 w-full flex items-center z-10 backdrop-filter backdrop-blur-xl">
         <div className="mx-auto w-full">
           <div className="flex items-center justify-center">
-            <header className="bg-transparent w-full border-b-[1px] border-slate-300">
+            <header className="bg-transparent w-full border-b-[1px] border-slate-300 py-2">
               <div className="container mx-auto md:w-full">
                 <div className="flex items-center justify-between ">
-                  <div className="px-5 py-5">
+                  <div className="px-5 pt-4 pb-5 text-4xl">
                     <Link href="/">
-                      <img src="../logo.png" className="w-24" />
+                      {/* <img src="../logo.png" className="w-24" /> */}
+                      <Logo />
                     </Link>
                   </div>
                   <div className="flex items-center gap-x-3 px-5">
@@ -26,7 +28,7 @@ function LandingNavbar() {
                       Sign In
                     </Link>
                     <Link
-                      className="w-[6.5rem] bg-green-600 border-2 border-green-600 hover:bg-white hover:text-green-600  text-white rounded-lg px-3 py-1.5 text-center"
+                      className="w-[6.5rem] bg-slate-950 border-2 border-slate-950 hover:bg-transparent hover:text-slate-950 font-medium  text-white rounded-lg px-3 py-1.5 text-center"
                       href="/user/register"
                     >
                       Sign Up

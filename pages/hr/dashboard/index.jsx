@@ -1,10 +1,12 @@
 import { ActiveJobData } from "@/Data/ActiveJobData";
 import { ApplicationData } from "@/Data/ApplicationData";
 import { StatusData } from "@/Data/StatusData";
+import HrNavbar from "@/components/HrNavbar";
 import Sidebar, { SidebarItem } from "@/components/HrSidebar";
 import LineChart from "@/components/LineChart";
 import PieChart from "@/components/PieChart";
 import UserNavbar from "@/components/UserNavbar";
+import { hrAuthPage } from "@/middlewares/hrAuth";
 
 import {
   LayoutDashboard,
@@ -13,8 +15,17 @@ import {
   Activity,
   Users2,
   PersonStanding,
+  MonitorDot,
+  ScreenShareOff,
 } from "lucide-react";
 import { useState } from "react";
+
+export async function getServerSideProps(context) {
+  const { token } = await hrAuthPage(context);
+  return {
+    props: {},
+  };
+}
 
 export default function HrDashboard() {
   const [applicationData, setApplicationData] = useState({
@@ -139,14 +150,22 @@ export default function HrDashboard() {
 
   return (
     <>
+      <div className="md:hidden">
+        <HrNavbar />
+      </div>
       <div className="flex bg-slate-50">
         <Sidebar>
-          <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" />
-          <SidebarItem icon={<Briefcase size={20} />} text="Jobs" />
+          <SidebarItem
+            icon={<LayoutDashboard size={20} />}
+            text="Dashboard"
+            active
+          />
+          <SidebarItem icon={<MonitorDot size={20} />} text="Active Jobs" />
+          <SidebarItem icon={<ScreenShareOff size={20} />} text="Past Jobs" />
           <hr className="my-3" />
           <SidebarItem icon={<HelpCircle size={20} />} text="Help" />
         </Sidebar>
-        <div className=" md:mx-5 mt-20 md:mt-8 w-full">
+        <div className=" md:mx-5 mt-20 px-2 md:mt-5 w-full">
           <div className="container mx-auto">
             <div className="w-full flex flex-wrap justify-center mx-auto">
               <div className="mb-2 p-2 w-full sm:w-1/2 xl:w-1/4  ">

@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .modal-popup {
     animation: popup 0.5s ease forwards;
 }

@@ -29,17 +29,27 @@ function Jobs(props) {
   const [isApplying, setIsApplying] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [selectedTab, setSelectedTab] = useState("jobFeed");
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 10;
 
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
   };
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = props.jobRes.slice(indexOfFirstJob, indexOfLastJob);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   const renderTabContent = () => {
     if (selectedTab === "jobFeed") {
       return (
         <div className="flex px-5 md:10/12 lg:w-9/12 mx-auto">
           <div className="w-full md:w-5/12 md:mr-5 ml-1 ">
             <div>
-              {props.jobRes.map((job) => {
+              {currentJobs.map((job) => {
                 return (
                   <div className="pb-1" data-aos="fade-up" key={job._id}>
                     <button
@@ -73,7 +83,20 @@ function Jobs(props) {
                   </div>
                 );
               })}
-              <p>Lorem ipsum dolor sit amet.</p>
+              <div className="pagination">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={indexOfLastJob >= props.jobRes.length}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
           <div className="md:w-7/12 ">
@@ -259,7 +282,7 @@ function Jobs(props) {
   return (
     <>
       <UserNavbar />
-      <div className={`pt-20 ${inter.className}`}>
+      <div className={`sm:pt-20 ${inter.className}`}>
         <div className=" w-full mx-auto mt-5">
           <div className="py-3 md:py-5 md:pb-8">
             <div className="mb-1 px-5 md:w-7/12 mx-auto">

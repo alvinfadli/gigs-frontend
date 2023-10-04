@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { hrUnAuthPage } from "@/middlewares/hrAuth";
+import Logo from "@/components/Logo";
 
 export async function getServerSideProps(context) {
   await hrUnAuthPage(context);
@@ -91,17 +92,21 @@ export default function HrRegister() {
               </div>
             </div> */}
 
-            <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+            <div className="flex flex-col justify-center md:justify-start my-auto md:pt-0 px-8 md:px-24 lg:px-32">
               <div className="mx-auto">
-                <Link href="/" className=" text-white font-bold text-xl p-4">
-                  <img
+                <Link
+                  href="/"
+                  className=" text-white font-bold text-4xl sm:text-7xl p-4"
+                >
+                  {/* <img
                     className="w-28 md:w-44 pr-3"
                     src="../logo.png"
                     alt="Workflow"
-                  />
+                  /> */}
+                  <Logo />
                 </Link>
               </div>
-              <h2 className="md:mt-6 text-center text-3xl font-extrabold text-gray-900">
+              <h2 className="text-center text-xl sm:text-3xl font-extrabold text-gray-900 -mt-5">
                 Hr Sign Up
               </h2>
               <p className="mt-2 text-center text-sm text-gray-600">
@@ -226,7 +231,7 @@ export default function HrRegister() {
 
           <div className="w-1/2 shadow-2xl">
             <img
-              className="object-cover w-full h-screen hidden md:block"
+              className="object-cover w-full h-full hidden md:block"
               src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
             />
           </div>
