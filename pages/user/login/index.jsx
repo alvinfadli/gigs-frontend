@@ -94,7 +94,7 @@ export default function UserLogin() {
                 or <span> </span>
                 <Link
                   href="/hr/login"
-                  className="font-medium text-green-600 hover:text-green-500"
+                  className="font-medium text-orange-600 hover:text-orange-500"
                 >
                   sign in with an HR Account
                 </Link>
@@ -161,7 +161,7 @@ export default function UserLogin() {
                 <input
                   type="submit"
                   value="Sign in"
-                  className="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+                  className="bg-orange-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
                 />
               </form>
               <div className="text-center pt-12 pb-12">
@@ -169,7 +169,7 @@ export default function UserLogin() {
                   Dont have an account?{" "}
                   <Link
                     href="/user/register"
-                    className="underline font-semibold text-green-600 hover:text-gray-700"
+                    className="underline font-semibold text-orange-600 hover:text-gray-700"
                   >
                     Register here.
                   </Link>

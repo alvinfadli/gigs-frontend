@@ -36,7 +36,7 @@ function UserDropdown() {
       {/* User Icon */}
       <button
         onClick={toggleDropdown}
-        className="flex items-center gap-x-2 rounded-md text-green-600 hover:text-gray-900 focus:outline-none focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-500"
+        className="flex items-center gap-x-2 rounded-md text-orange-600 hover:text-gray-900 focus:outline-none focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-500"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

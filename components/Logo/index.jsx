@@ -10,7 +10,7 @@ const mono = Mono({
 function Logo() {
   return (
     <>
-      <p className={`p-0 m-0 -mt-1 text-green-700 ${mono.className}`}>'gigs'</p>
+      <p className={`p-0 m-0 -mt-1 text-orange-700 ${mono.className}`}>gigs</p>
     </>
   );
 }

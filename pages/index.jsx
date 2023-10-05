@@ -17,25 +17,25 @@ export default function Home() {
       {/* hero start */}
       <LandingNavbar />
       <div className="container px-8 md:px-1 py-5">
-        <h1 className="text-center font-bold text-green-700 text-3xl md:text-5xl">
+        <h1 className="text-center font-bold text-orange-700 text-3xl md:text-5xl">
           Connecting Futures, One Job at a Time.
         </h1>
         <div className="container mx-auto w-11/12 px-10">
           <div className="flex items-center justify-between">
             <img
-              src="hero-1.svg"
+              src="photographer.svg"
               alt=""
               srcSet=""
               className="hidden md:block md:w-4/12"
             />
             <img
-              src="hero-2.svg"
+              src="man-riding-a-rocket.svg"
               alt=""
               srcSet=""
               className="w-full md:w-4/12"
             />
             <img
-              src="hero-3.svg"
+              src="home-office.svg"
               alt=""
               srcSet=""
               className="hidden md:block md:w-4/12"
@@ -52,55 +52,57 @@ export default function Home() {
         </p>
       </div>
       <div className="flex flex-wrap container pt-10 justify-center">
-        <div class="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
+        <div className="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
           <div className="flex justify-center">
             <Globe2 size={45} />
           </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
               Wide Reach and Accessibility
             </div>
-            <p class="text-gray-700 text-base">
+            <p className="text-gray-700 text-base">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Voluptatibus quia, nulla!
             </p>
           </div>
         </div>
-        <div class="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
+        <div className="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
           <div className="flex justify-center">
             <CircleDollarSign size={45} />
           </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">Cost-Effective Recruitment</div>
-            <p class="text-gray-700 text-base">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
+              Cost-Effective Recruitment
+            </div>
+            <p className="text-gray-700 text-base">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Voluptatibus quia, nulla!
             </p>
           </div>
         </div>
-        <div class="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
+        <div className="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
           <div className="flex justify-center">
             <SearchCheck size={45} />
           </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
               Advanced Search and Matching
             </div>
-            <p class="text-gray-700 text-base">
+            <p className="text-gray-700 text-base">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Voluptatibus quia, nulla!
             </p>
           </div>
         </div>
-        <div class="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
+        <div className="w-full md:w-1/2 max-w-sm rounded overflow-hidden text-center pb-5">
           <div className="flex justify-center">
             <MonitorCheck size={45} />
           </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
               Data Analytics and Insights
             </div>
-            <p class="text-gray-700 text-base">
+            <p className="text-gray-700 text-base">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Voluptatibus quia, nulla!
             </p>
@@ -109,7 +111,7 @@ export default function Home() {
       </div>
       <div className="container mx-auto w-11/12 border-b-[1px] border-slate-300"></div>
       <div className="pt-8 text-center">
-        <h1 className="font-bold text-3xl pb-10">Trusted by top companies</h1>
+        <h1 className="font-bold text-3xl pb-10"></h1>
         {/* <div className="flex justify-center items-center mt-4">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"

@@ -113,7 +113,7 @@ export default function HrRegister() {
                 or <span> </span>
                 <Link
                   href="/user/register"
-                  className="font-medium text-green-600 hover:text-green-500"
+                  className="font-medium text-orange-600 hover:text-orange-500"
                 >
                   sign up as a Job Seeker
                 </Link>
@@ -212,7 +212,7 @@ export default function HrRegister() {
                 <input
                   type="submit"
                   value="Sign up"
-                  className="bg-green-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
+                  className="bg-orange-600 rounded-lg text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8"
                 />
               </form>
               <div className="text-center pt-12 pb-12">
@@ -220,7 +220,7 @@ export default function HrRegister() {
                   Already have an account?{" "}
                   <Link
                     href="/hr/login"
-                    className="underline font-semibold text-green-600 hover:text-gray-700"
+                    className="underline font-semibold text-orange-600 hover:text-gray-700"
                   >
                     Sign in.
                   </Link>
@@ -271,7 +271,7 @@ export default function HrRegister() {
                 <Link
                   href="/hr/login"
                   onClick={closeModal}
-                  className="bg-green-600 text-white py-2 px-4 rounded-lg w-[100px] hover:bg-white hover:text-green-600 border-2 border-green-600"
+                  className="bg-orange-600 text-white py-2 px-4 rounded-lg w-[100px] hover:bg-white hover:text-orange-600 border-2 border-orange-600"
                 >
                   Sign in
                 </Link>

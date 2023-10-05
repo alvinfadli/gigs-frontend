@@ -107,8 +107,8 @@ export function SidebarItem({ icon, text, active, alert }) {
         transition-colors group
         ${
           active
-            ? "bg-gradient-to-tr from-green-200 to-green-100 text-green-800"
-            : "hover:bg-green-50 text-grey-600"
+            ? "bg-gradient-to-tr from-orange-200 to-orange-100 text-orange-800"
+            : "hover:bg-orange-50 text-grey-600"
         }
     `}
     >

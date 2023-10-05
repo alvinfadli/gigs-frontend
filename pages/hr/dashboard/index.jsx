@@ -7,6 +7,9 @@ import LineChart from "@/components/LineChart";
 import PieChart from "@/components/PieChart";
 import UserNavbar from "@/components/UserNavbar";
 import { hrAuthPage } from "@/middlewares/hrAuth";
+import axios from "axios";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 import {
   LayoutDashboard,
@@ -28,6 +31,10 @@ export async function getServerSideProps(context) {
 }
 
 export default function HrDashboard() {
+  const [totalJobs, setTotalJobs] = useState(0);
+  const [totalActiveJobs, setTotalActiveJobs] = useState(0);
+  const [totalApplication, setTotalApplications] = useState(0);
+  const [totalPendingApp, setTotalPendingApp] = useState(0);
   const [applicationData, setApplicationData] = useState({
     labels: ApplicationData.map((data) => data.month),
     datasets: [
@@ -59,6 +66,50 @@ export default function HrDashboard() {
       },
     ],
   });
+  useEffect(() => {
+    const token = Cookies.get("token");
+
+    const axiosInstance = axios.create({
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Make a GET request to your API endpoint using Axios
+    axiosInstance
+      .get("http://localhost:3000/api/dashboard/alljobs")
+      .then((response) => {
+        setTotalJobs(response.data.data.totalJobs);
+      })
+      .catch((error) => {
+        console.error("Error fetching total jobs:", error);
+      });
+    axiosInstance
+      .get("http://localhost:3000/api/dashboard/activejobs")
+      .then((response) => {
+        setTotalActiveJobs(response.data.data.totalActiveJobs);
+      })
+      .catch((error) => {
+        console.error("Error fetching total jobs:", error);
+      });
+    axiosInstance
+      .get("http://localhost:3000/api/dashboard/totalapplications")
+      .then((response) => {
+        setTotalApplications(response.data.data.totalApplications);
+      })
+      .catch((error) => {
+        console.error("Error fetching total jobs:", error);
+      });
+    axiosInstance
+      .get("http://localhost:3000/api/dashboard/totalapplications/pending")
+      .then((response) => {
+        setTotalPendingApp(response.data.data.totalPendingApplications);
+      })
+      .catch((error) => {
+        console.error("Error fetching total jobs:", error);
+      });
+  }, []);
 
   const activeJobsData = [
     {
@@ -175,11 +226,13 @@ export default function HrDashboard() {
                   data-aos="fade-up"
                 >
                   <div className="flex p-6">
-                    <div className="flex items-center bg-green-200 p-5 mr-3 rounded-full">
-                      <Briefcase color="#166534" size={25} />
+                    <div className="flex items-center bg-orange-200 p-5 mr-3 rounded-full">
+                      <Briefcase color="#c2410c" size={25} />
                     </div>
                     <div>
-                      <p className="pt-1 text-neutral-600 text-3xl">213</p>
+                      <p className="pt-1 text-neutral-600 text-3xl">
+                        {totalJobs}
+                      </p>
                       <h5 className=" text-lg font-medium leading-tight text-neutral-800">
                         All Jobs
                       </h5>
@@ -198,7 +251,9 @@ export default function HrDashboard() {
                       <Activity color="#9f1239" size={25} />
                     </div>
                     <div>
-                      <p className="pt-1 text-neutral-600 text-3xl">21</p>
+                      <p className="pt-1 text-neutral-600 text-3xl">
+                        {totalActiveJobs}
+                      </p>
                       <h5 className=" text-md font-medium leading-tight text-neutral-800">
                         Active Jobs
                       </h5>
@@ -217,7 +272,9 @@ export default function HrDashboard() {
                       <Users2 color="#3730a3" size={25} />
                     </div>
                     <div>
-                      <p className="pt-1 text-neutral-600 text-3xl">21</p>
+                      <p className="pt-1 text-neutral-600 text-3xl">
+                        {totalApplication}
+                      </p>
                       <h5 className=" text-md font-medium leading-tight text-neutral-800">
                         Total Applied
                       </h5>
@@ -236,7 +293,9 @@ export default function HrDashboard() {
                       <PersonStanding color="#92400e" size={25} />
                     </div>
                     <div>
-                      <p className="pt-1 text-neutral-600 text-3xl">21</p>
+                      <p className="pt-1 text-neutral-600 text-3xl">
+                        {totalPendingApp}
+                      </p>
                       <h5 className=" text-md font-medium leading-tight text-neutral-800">
                         Waiting
                       </h5>

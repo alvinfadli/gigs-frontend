@@ -150,7 +150,7 @@ function Jobs(props) {
                       <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
                       <div className="absolute bottom-4 right-6">
                         <button
-                          className="bg-green-600 hover:bg-green-700 w-max text-white font-bold py-3 px-4 rounded-lg"
+                          className="bg-orange-600 hover:bg-orange-700 w-max text-white font-bold py-3 px-4 rounded-lg"
                           onClick={() => applyHandler(item._id)}
                           disabled={isApplying}
                         >
@@ -314,13 +314,13 @@ function Jobs(props) {
                   <input
                     type="search"
                     id="default-search"
-                    className="block w-full p-4 pl-10 text-sm text-gray-900 border border-slate-400 rounded-lg focus:ring-green-500 focus:border-green-500 dark:placeholder-gray-400 dark:focus:ring-green-500 dark:focus:border-green-500 py-5"
+                    className="block w-full p-4 pl-10 text-sm text-gray-900 border border-slate-400 rounded-lg focus:ring-orange-500 focus:border-orange-500 dark:placeholder-gray-400 dark:focus:ring-orange-500 dark:focus:border-orange-500 py-5"
                     placeholder="Search Jobs..."
                     required
                   />
                   <button
                     type="submit"
-                    className="text-white absolute right-2.5 bottom-3 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                    className="text-white absolute right-2.5 bottom-3 bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
                   >
                     Search
                   </button>

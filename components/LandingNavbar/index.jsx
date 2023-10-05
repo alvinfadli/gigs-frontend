@@ -23,7 +23,7 @@ function LandingNavbar() {
                 </button> */}
                     <Link
                       href="/user/login"
-                      className="bg-transparent px-3 py-2 text-center hover:text-green-600 hidden md:block"
+                      className="bg-transparent px-3 py-2 text-center hover:text-orange-600 hidden md:block"
                     >
                       Sign In
                     </Link>
