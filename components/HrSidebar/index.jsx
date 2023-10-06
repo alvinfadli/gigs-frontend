@@ -44,7 +44,7 @@ export default function Sidebar({ children }) {
   return (
     <aside
       className={`sticky top-0 h-screen z-10 hidden border-r md:block transition-all ${
-        expanded ? "w-full md:w-3/12 lg:w-2/12" : "w-0 md:w-min"
+        expanded ? "w-min" : "w-0 md:w-min"
       }`}
     >
       <nav className="h-full flex flex-col bg-white shadow-sm transition-all">
@@ -106,11 +106,6 @@ export function SidebarItem({ icon, text, active, alert }) {
         relative flex items-center py-2 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group
-        ${
-          active
-            ? "bg-gradient-to-tr from-orange-200 to-orange-100 text-orange-800"
-            : "hover:bg-orange-50 text-grey-600"
-        }
     `}
     >
       {icon}
@@ -123,7 +118,7 @@ export function SidebarItem({ icon, text, active, alert }) {
       </span>
       {alert && (
         <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
+          className={`absolute right-2 w-2 h-2 rounded bg-orange-400 ${
             expanded ? "" : "top-2"
           }`}
         />
@@ -133,7 +128,7 @@ export function SidebarItem({ icon, text, active, alert }) {
         <div
           className={`
           absolute left-full rounded-md px-2 py-1 ml-6
-          bg-indigo-100 text-indigo-800 text-sm
+          bg-orange-100 text-orange-800 text-sm
           invisible opacity-20 -translate-x-3 transition-all
           group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
       `}
