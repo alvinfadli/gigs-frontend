@@ -8,6 +8,7 @@ import {
 import { useContext, createContext, useState, useEffect } from "react";
 import Cookie from "js-cookie";
 import Router from "next/router";
+import Logo from "../Logo";
 
 const SidebarContext = createContext();
 
@@ -42,22 +43,22 @@ export default function Sidebar({ children }) {
 
   return (
     <aside
-      className={`sticky top-0 h-screen transition-all z-10 hidden md:block ${
-        expanded ? "w-full sm:w-full md:w-3/12 lg:w-2/12" : "w-0 md:w-min"
+      className={`sticky top-0 h-screen z-10 hidden border-r md:block transition-all ${
+        expanded ? "w-full md:w-3/12 lg:w-2/12" : "w-0 md:w-min"
       }`}
     >
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-white shadow-sm transition-all">
         <div className="p-4 pb-2 mb-5 flex justify-between items-center">
-          <img
-            src="../logo.png"
-            className={`overflow-hidden transition-all  ${
+          <div
+            className={`overflow-hidden text-3xl transition-all  ${
               expanded ? "w-20" : "w-0"
             }`}
-            alt=""
-          />
+          >
+            <Logo />
+          </div>
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
+            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 transition-transform"
           >
             {expanded ? <ChevronFirst /> : <Menu />}
           </button>
