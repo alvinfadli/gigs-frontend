@@ -73,7 +73,7 @@ function Insight() {
         console.error("Error fetching total jobs:", error);
       });
     axiosInstance
-      .get("http://localhost:3000/api/dashboard/activejobs")
+      .get("http://localhost:3000/api/dashboard/activejobs/total")
       .then((response) => {
         setTotalActiveJobs(response.data.data.totalActiveJobs);
       })
