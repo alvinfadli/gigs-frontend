@@ -83,20 +83,6 @@ function Jobs(props) {
                   </div>
                 );
               })}
-              <div className="pagination">
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                >
-                  Previous
-                </button>
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={indexOfLastJob >= props.jobRes.length}
-                >
-                  Next
-                </button>
-              </div>
             </div>
           </div>
           <div className="md:w-7/12 ">
