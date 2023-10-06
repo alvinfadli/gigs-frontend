@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DashboardDropdown from "../Dashboard/Dropdown";
+import DashboardDropdown from "../Dashboard/ProfileDropdown";
 function HrNavbar() {
   return (
     <>
