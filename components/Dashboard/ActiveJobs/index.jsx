@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, message, Space, Tooltip } from "antd";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 function convertTextToTitleCase(text) {
-  // Check if text is defined and is a non-empty string
   if (typeof text !== "string" || text.trim() === "") {
     return "";
   }
@@ -46,15 +44,12 @@ function formatDate(inputDate) {
     "Dec",
   ];
 
-  // Parse the input date string
   const date = new Date(inputDate);
 
-  // Get the components of the date
   const day = date.getDate();
   const monthIndex = date.getMonth();
   const year = date.getFullYear();
 
-  // Create a formatted string
   const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
 
   return formattedDate;
@@ -63,7 +58,13 @@ function formatDate(inputDate) {
 export default function ActiveJobs() {
   const [activeJobs, setActiveJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedJobType, setSelectedJobType] = useState("All"); // Default to "All"
+  const [selectedJobType, setSelectedJobType] = useState("All");
+  const router = useRouter();
+
+  const handleDetails = (jobId) => {
+    console.log("View button clicked for job with ID:", jobId);
+    router.push(`/hr/dashboard/user-applied/${jobId}`);
+  };
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -299,7 +300,10 @@ export default function ActiveJobs() {
                               </div>
                             </td>
                             <td className="pl-4">
-                              <button className="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none">
+                              <button
+                                className="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none"
+                                onClick={() => handleDetails(job._id)}
+                              >
                                 View
                               </button>
                             </td>

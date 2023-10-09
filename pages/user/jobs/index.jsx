@@ -123,14 +123,6 @@ function Jobs(props) {
                             })}
                           </ul>
                           <p className="pt-3 text-justify">{item.additional}</p>
-                          {/* <ul className="list-disc px-5">
-                                    {item.userApplied.map((x, index) => {
-                                      return <li key={index}>{x}</li>;
-                                    })}
-                                  </ul> */}
-                          {/* <ReactMarkdown>
-                                    {item.description}
-                                  </ReactMarkdown> */}
                         </div>
                       </div>
                       <div className="container mx-auto w-[100] border-b-[1px] border-slate-400"></div>
