@@ -66,16 +66,7 @@ function JobDetails() {
         </div>
       </div>
       <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded-lg shadow-md">
-        <div className="sm:flex items-center justify-between">
-          <div className="flex items-center"></div>
-
-          <button className="focus:ring-2 focus:ring-offset-2 focus:ring-orange-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-orange-700 hover:bg-orange-600 focus:outline-none rounded">
-            <p className="text-sm font-medium leading-none text-white">
-              Add Task
-            </p>
-          </button>
-        </div>
-        <div className="mt-7 overflow-x-auto pb-3">
+        <div className="overflow-x-auto pb-3">
           <table className="w-full whitespace-nowrap">
             <tbody>
               {isLoading ? (
