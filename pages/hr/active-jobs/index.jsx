@@ -488,9 +488,9 @@ const ActiveJobs = () => {
               </a>
             </div>
 
-            <button className="focus:ring-2 focus:ring-offset-2 focus:ring-orange-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-orange-700 hover:bg-orange-600 focus:outline-none rounded">
+            <button className="focus:ring-2 focus:ring-offset-2 focus:ring-orange-600 mt-4 sm:mt-0 inline-flex items-start justify-start px-6 py-3 bg-orange-600 hover:bg-orange-500 focus:outline-none rounded">
               <p className="text-sm font-medium leading-none text-white">
-                Add Task
+                Create job
               </p>
             </button>
           </div>
@@ -626,7 +626,7 @@ const ActiveJobs = () => {
                                   ></path>
                                 </svg>
                                 <p className="text-sm leading-none text-gray-600 ml-2">
-                                  23
+                                  {job.totalApplications}
                                 </p>
                               </div>
                             </td>
