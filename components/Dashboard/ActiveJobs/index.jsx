@@ -63,7 +63,7 @@ export default function ActiveJobs() {
 
   const handleDetails = (jobId) => {
     console.log("View button clicked for job with ID:", jobId);
-    router.push(`/hr/dashboard/user-applied/${jobId}`);
+    router.push(`hr/dashboard/user-applied/${jobId}`);
   };
 
   useEffect(() => {

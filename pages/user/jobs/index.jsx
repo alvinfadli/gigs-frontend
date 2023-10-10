@@ -30,7 +30,7 @@ function Jobs(props) {
   const [accessToken, setAccessToken] = useState("");
   const [selectedTab, setSelectedTab] = useState("jobFeed");
   const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 10;
+  const jobsPerPage = 30;
 
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);

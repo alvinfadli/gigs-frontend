@@ -1,8 +1,6 @@
 "use-client";
 import React, { useState } from "react";
-import HrNavbar from "@/components/HrNavbar";
 import { hrAuthPage } from "@/middlewares/hrAuth";
-import HrSidebar from "@/components/HrSidebar";
 import { ApplicationData } from "@/Data/ApplicationData";
 import { StatusData } from "@/Data/StatusData";
 import LineChart from "@/components/Charts/LineChart";
